@@ -72,14 +72,12 @@ function setColors(setTo) {
 
 function swapColors() {
     let current = localStorage.getItem(NAME);
-    $("a.toggle-color").text(current + " Mode");
+    document.getElementById("toggle-color").innerHTML = current + " Mode";
     let next = current == "Dark" ? "Light" : "Dark";
     setColors(next);
     localStorage.setItem(NAME, next);
 }
 
-$(document).ready(function () {
-    let current = localStorage.getItem(NAME);
-    setColors(current);
-    $("a.toggle-color").text((current == "Dark" ? "Light" : "Dark") + " Mode");
-});
+let current = localStorage.getItem(NAME);
+setColors(current);
+document.getElementById("toggle-color").innerHTML = (current == "Dark" ? "Light" : "Dark") + " Mode";
