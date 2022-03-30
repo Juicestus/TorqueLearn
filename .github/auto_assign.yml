@@ -1,9 +1,0 @@
-addReviewers: true
-
-addAssignees: author
-
-reviewers:
-  - realSaddy
-  - Juicestus
-
-numberOfReviewers: 1
