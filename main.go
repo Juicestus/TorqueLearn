@@ -1,3 +1,5 @@
+// This is a bruh moment
+
 package main
 
 import (
