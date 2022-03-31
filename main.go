@@ -11,8 +11,6 @@ const (
 
 func main() {
 
-	GenerateStaticFiles()
-
 	http.Handle("/", http.FileServer(http.Dir("./deploy")))
 
 	if err := http.ListenAndServe(":"+PORT, nil); err != nil {
