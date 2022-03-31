@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os/exec"
 )
 
 const (
@@ -11,31 +10,16 @@ const (
 	URL  = "https://github.com/Juicestus/TorqueLearn"
 )
 
-func Execute(command string, args ...string) {
-	cmd := exec.Command(command, args...)
-	out, err := cmd.Output()
+func ServeStaticFiles(port string) {
+	http.Handle("/", http.FileServer(http.Dir("./deploy")))
+
+	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal(err)
-	}
-	log.Println(string(out))
-}
-
-func Fetch() {
-	exists, err := FileExists("./local")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if exists {
-		Execute("cd", "./local", "&&", "git", "pull")
-	} else {
-		Execute("git", "clone", URL, "./local")
 	}
 }
 
 func main() {
-
-	Fetch()
 
 	http.Handle("/", http.FileServer(http.Dir("./deploy")))
 
