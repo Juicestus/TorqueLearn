@@ -1,4 +1,4 @@
-// This is a bruh moment
+// Fuck this
 
 package main
 
