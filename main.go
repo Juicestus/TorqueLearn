@@ -9,16 +9,9 @@ const (
 	PORT = "8080"
 )
 
-func ServeStaticFiles(port string) {
-	http.Handle("/", http.FileServer(http.Dir("./deploy")))
-
-	err := http.ListenAndServe(":"+port, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
 func main() {
+
+	GenerateStaticFiles()
 
 	http.Handle("/", http.FileServer(http.Dir("./deploy")))
 
